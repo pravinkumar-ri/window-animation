@@ -1,0 +1,173 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow-y: hidden;
+    background-color: lightslategrey;
+}
+.window{
+    position: relative;
+}
+.container{
+    position: relative;
+    background-color: rgb(28, 48, 61);
+    width: 270px;
+    height: 320px;
+    border: 10px solid white;
+    overflow: hidden;
+}
+.container::before{
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 100px;
+    background-color: rgb(36, 36, 36);
+    top: 240px;
+    box-shadow: 30px 30px rgb(36, 36, 36), 70px 15px rgb(36, 36, 36), 130px 20px rgb(36, 36, 36), 180px -5px rgb(36, 36, 36), 240px 40px rgb(36, 36, 36), 220px -40px rgb(51, 53, 51), 170px -20px rgb(51, 53, 51), 130px 10px rgb(51, 53, 51), 90px -10px rgb(51, 53, 51), 40px -30px rgb(51, 53, 51), 10px -5px rgb(51, 53, 51);
+}
+.container::after{
+    position: absolute;
+    content: "";
+    background-color: rgb(182, 145, 33);
+    width: 10px;
+    height: 15px;
+    top: 250px;
+    left: 10px;
+    box-shadow: 17px 0 rgb(146, 108, 21), 34px 0 rgb(128, 91, 16), 85px -15px rgb(146, 108, 21), 103px -15px rgb(128, 91, 16), 155px 15px rgb(182, 145, 33), 175px -10px rgb(182, 145, 33), 190px -10px rgb(146, 108, 21), 205px -10px rgb(128, 91, 16), 240px -40px rgb(128, 91, 16), 40px -35px rgb(146, 108, 21), 60px -35px rgb(128, 91, 16), 70px 10px rgb(182, 145, 33), 85px 10px rgb(146, 108, 21), 100px 10px rgb(128, 91, 16);
+}
+.rain{
+    position: absolute;
+}
+.rain::before{
+    position: absolute;
+    content: "";
+    width: 270px;
+    height: 10px;
+    background-color: rgb(255, 255, 255);
+    top: 160px;
+}
+.rain::after{
+    position: absolute;
+    content: "";
+    width: 30px;
+    height: 5px;
+    background-color: rgb(179, 179, 179);
+    border-radius: 20px 20px 0 0;
+    top: 155px;
+    left: 120px;
+}
+.droplet-1, .droplet-2,
+.droplet-3, .droplet-4,
+.droplet-5{
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    height: 15px;
+    width: 1px;
+    transform: rotate(25deg);
+    box-shadow: -50px -50px rgb(255, 255, 255), 50px -270px rgb(255, 255, 255), 60px -100px rgb(255, 255, 255), -40px -130px rgb(255, 255, 255), -80px -250px rgb(255, 255, 255);
+}
+.droplet-1{
+    left: 200px;
+    animation: rain 1.1s linear infinite;
+}
+.droplet-2{
+    left: 100px;
+    top: -20px;
+    animation: rain .8s linear infinite;
+}
+.droplet-3{
+    left: 50px;
+    top: -50px;
+    animation: rain 1.2s linear infinite;
+}
+.droplet-4{
+    left: 150px;
+    top: -70px;
+    animation: rain 1.3s linear infinite;
+}
+.droplet-5{
+    left: 240px;
+    top: -40px;
+    animation: rain 1s linear infinite;
+}
+
+@keyframes rain{
+    0%{
+        opacity: 0.9;
+        top: -100px;
+        transform: rotate(25deg) translateX(0);
+    }
+    100%{
+        opacity: 0;
+        top: 600px;
+        transform: rotate(25deg) translateX(-150px);
+    }
+}
+.shine{
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.04);
+    width: 70px;
+    height: 290px;
+    top: 40px;
+    left: 20px;
+    transform: skew(-30deg);
+    box-shadow: 190px 0 rgba(255, 255, 255, 0.04);
+}
+.roll{
+    position: absolute;
+    background-color: rgb(51, 51, 51);
+    width: 320px;
+    height: 15px;
+    top: -10px;
+    left: -15px;
+    border-radius: 20px 20px 0 0;
+    z-index: 10;
+}
+.roll::before{
+    position: absolute;
+    width: 350px;
+    content: "";
+    background-color: rgb(255, 255, 255);
+    height: 15px;
+    left: -15px;
+    top: 350px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.15);
+}
+.blind{
+    position: absolute;
+    width: 290px;
+    height: 50px;
+    background-color: rgb(157, 180, 192);
+    left: 0;
+    top: 0;
+    z-index: 2;
+    transition: 0.5s;
+    box-shadow: inset 0 -7px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.15);
+}
+.blind::before{
+    content: "";
+    position: absolute;
+    background-color: rgb(51, 51, 51);
+    width: 2px;
+    height: 130px;
+    top: 0;
+    left: 300px;
+}
+.blind::after{
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 25px;
+    background-color: rgb(51, 51, 51);
+    border-radius: 20px;
+    left: 296px;
+    top: 130px;
+    cursor: pointer;
+}
+input#blind{
+    display: none;
+}
+#blind:checked+.blind{
+    height: 340px;
+}
